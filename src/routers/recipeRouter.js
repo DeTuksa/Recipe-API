@@ -20,12 +20,33 @@ router.post('/create-recipe', auth, async (req, res) => {
     }
 })
 
+//Route to get all recipes
 router.get('/get-all-recipes', auth, async (req, res) => {
+    //TODO: Add pagination
+    //TODO: Add filtering
     try {
         const allRecipe = await Recipe.find()
         res.send({
             message: "Request successful",
             recipes: allRecipe
+        })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+//Route to get all users recipes
+router.get('/user/recipes', auth, async (req, res) => {
+    //Add pagination
+    const match = {}
+    try {
+        await req.user.populate({
+            path: 'recipes',
+            match,
+        }).execPopulate()
+        res.send({
+            message: 'Request successful',
+            recipes: req.user.recipes
         })
     } catch (error) {
         res.status(400).send(error)
