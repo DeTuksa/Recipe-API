@@ -6,7 +6,7 @@ const options = {
     method: 'GET',
     url: 'https://the-cocktail-db.p.rapidapi.com/randomselection.php',
     headers: {
-      'X-RapidAPI-Key': 'f55f5a8c6dmsh8b67830f5bbdeaep108d73jsna4bf5d4e939f',
+      'X-RapidAPI-Key': process.env.COCKTAIL_API_KEY,
       'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
     }
   };

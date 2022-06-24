@@ -10,7 +10,7 @@ const options = {
     url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random',
     params: {number: '10'},
     headers: {
-      'X-RapidAPI-Key': '7c4d397837msha39637ef1f5e2ffp1f57eajsnb7c05a257e80',
+      'X-RapidAPI-Key': process.env.RECIPE_API_KEY,
       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
     }
   };
