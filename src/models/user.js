@@ -47,6 +47,9 @@ const userSchema = new mongoose.Schema(
         }],
         'avatar': {
             type: Buffer
+        },
+        'push_notification_id': {
+            type: String
         }
     },
     {
