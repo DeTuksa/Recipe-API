@@ -5,18 +5,17 @@ const axios = require('axios');
 
 const auth = require('../middleware/auth');
 
-const options = {
-    method: 'GET',
-    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random',
-    params: {number: '10'},
-    headers: {
-      'X-RapidAPI-Key': process.env.RECIPE_API_KEY,
-      'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-    }
-  };
-
   //Route to get 10 random recipes
 router.get('/recipes/get-recipe', async (req, res) => {
+    const options = {
+        method: 'GET',
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random',
+        params: {number: '10'},
+        headers: {
+          'X-RapidAPI-Key': process.env.RECIPE_API_KEY,
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
+      };
 
     try {
         axios.request(options).then(function (response) {
