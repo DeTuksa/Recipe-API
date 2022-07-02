@@ -60,6 +60,33 @@ router.get('/recipes/get-recipe', async (req, res) => {
     }
 })
 
+//Route to get specific recipe by id
+router.get('/recipes/get-recipe-by-id', async (req, res) => {
+    let recipeId = req.query.recipe_id;
+    console.log(recipeId)
+    const options = {
+        method: 'GET',
+        url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeId}/information`,
+        headers: {
+          'X-RapidAPI-Key': process.env.RECIPE_API_KEY,
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
+      };
+
+    try {
+        axios.request(options).then(function (response) {
+            res.status(200).send({
+                message: 'Fetched successfully',
+                recipe: response.data
+                })
+        }).catch(function (error) {
+            return res.status(400).send(error)
+        });
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 //Route to create a new recipe
 router.post('/create-recipe', auth, async (req, res) => {
 
