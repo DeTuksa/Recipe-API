@@ -67,6 +67,9 @@ router.get('/recipes/get-recipe-by-id', async (req, res) => {
     const options = {
         method: 'GET',
         url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeId}/information`,
+        params: {
+            number: 100
+        },
         headers: {
           'X-RapidAPI-Key': process.env.RECIPE_API_KEY,
           'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
@@ -104,7 +107,7 @@ router.post('/create-recipe', auth, async (req, res) => {
 })
 
 //Route to get all recipes
-router.get('/get-all-recipes', auth, async (req, res) => {
+router.get('/get-all-recipes', async (req, res) => {
     //TODO: Add pagination
     //TODO: Add filtering
     try {
